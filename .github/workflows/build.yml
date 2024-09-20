@@ -44,10 +44,10 @@ jobs:
         name: ${{ matrix.artifact }}
         path: subconverter/
     - name: Package Release
-      if: ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') }}
+      if: ${{ github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') }}
       run: tar czf ${{ matrix.artifact }}.tar.gz subconverter
     - name: Draft Release
-      if: ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') }}
+      if: ${{ github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') }}
       uses: softprops/action-gh-release@v2
       with:
         files: ${{ matrix.artifact }}.tar.gz
@@ -85,10 +85,10 @@ jobs:
         name: ${{ matrix.artifact }}
         path: subconverter/
     - name: Package Release
-      if: ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') }}
+      if: ${{ github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') }}
       run: tar czf ${{ matrix.artifact }}.tar.gz subconverter
     - name: Draft Release
-      if: ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/') }}
+      if: ${{ github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') }}
       uses: softprops/action-gh-release@v2
       with:
         files: ${{ matrix.artifact }}.tar.gz
