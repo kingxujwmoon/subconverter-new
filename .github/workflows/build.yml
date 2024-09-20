@@ -52,6 +52,8 @@ jobs:
       with:
         files: ${{ matrix.artifact }}.tar.gz
         draft: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   macos_build:
     strategy:
@@ -91,6 +93,8 @@ jobs:
       with:
         files: ${{ matrix.artifact }}.tar.gz
         draft: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   windows_build:
     strategy:
@@ -146,3 +150,5 @@ jobs:
       with:
         files: ${{ matrix.artifact }}.7z
         draft: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
